@@ -5,7 +5,7 @@ warnings.filterwarnings("ignore")
 
 
 def create_substitution_map(keyword):
-    keyword = keyword.upper().replace(" ", "").replaceJUNK("")
+    keyword = keyword.upper().replace(" ", "")
     keyword = ''.join([c for c in keyword if c.isalpha()])
     keyword = ''.join(dict.fromkeys(keyword))
     alphabet = string.ascii_uppercase
