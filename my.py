@@ -55,12 +55,12 @@ st.markdown("---")
 st.markdown("### 📂 选择密码演示")
 
 cipher_buttons = [
-    ("1_希尔密码", "📊", "希尔密码（Hill Cipher）使用矩阵乘法进行加密"),
-    ("2_仿射密码", "🔢", "仿射密码（Affine Cipher）使用线性变换公式加密"),
-    ("3_代换密码", "🔄", "代换密码（Substitution Cipher）使用字符映射表加密"),
-    ("4_维吉尼亚密码", "🔑", "维吉尼亚密码（Vigenère Cipher）使用重复密钥流加密"),
-    ("5_置换密码", "📐", "置换密码（Permutation Cipher）通过位置重排加密"),
-    ("6_移位密码", "➡️", "移位密码（Shift Cipher）即经典凯撒密码"),
+    ("1_希尔密码", "📊", "使用矩阵乘法进行加密"),
+    ("2_仿射密码", "🔢", "使用线性变换公式加密"),
+    ("3_代换密码", "🔄", "使用字符映射表加密"),
+    ("4_维吉尼亚密码", "🔑", "使用重复密钥流加密"),
+    ("5_置换密码", "📐", "通过位置重排加密"),
+    ("6_移位密码", "➡️", "即经典凯撒密码"),
 ]
 
 for i in range(0, 6, 3):
@@ -71,6 +71,9 @@ for i in range(0, 6, 3):
             with cols[j]:
                 st.markdown(f"#### {icon} {page_name[2:]}")
                 st.markdown(desc)
+                st.markdown("")
+                st.markdown("")
+                st.markdown("")
                 if st.button(f"打开 {page_name[2:]}", key=f"btn_{page_name}"):
                     st.switch_page(f"pages/{page_name}.py")
 
