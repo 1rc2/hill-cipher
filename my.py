@@ -54,22 +54,30 @@ st.markdown("---")
 
 st.markdown("### 📂 选择密码演示")
 
-ciphers = [
-    ("1_希尔密码", "希尔密码（Hill Cipher）使用矩阵乘法进行加密，是第一个实用的多字母代替密码。", "📊"),
-    ("2_仿射密码", "仿射密码（Affine Cipher）使用公式 C=(a×M+b) mod 26 进行线性变换加密。", "🔢"),
-    ("3_代换密码", "代换密码（Substitution Cipher）使用关键字生成字符映射表进行一一替换。", "🔄"),
-    ("4_维吉尼亚密码", "维吉尼亚密码（Vigenère Cipher）使用关键字生成的重复密钥流进行加密。", "🔑"),
-    ("5_置换密码", "置换密码（Permutation Cipher）通过矩阵列重排改变字符位置实现加密。", "📐"),
-    ("6_移位密码", "移位密码（Shift Cipher）即凯撒密码，每个字母循环移动固定位数。", "➡️"),
+col1, col2, col3 = st.columns(3)
+
+cipher_buttons = [
+    ("1_希尔密码", "📊", "希尔密码（Hill Cipher）使用矩阵乘法进行加密"),
+    ("2_仿射密码", "🔢", "仿射密码（Affine Cipher）使用线性变换公式加密"),
+    ("3_代换密码", "🔄", "代换密码（Substitution Cipher）使用字符映射表加密"),
+    ("4_维吉尼亚密码", "🔑", "维吉尼亚密码（Vigenère Cipher）使用重复密钥流加密"),
+    ("5_置换密码", "📐", "置换密码（Permutation Cipher）通过位置重排加密"),
+    ("6_移位密码", "➡️", "移位密码（Shift Cipher）即经典凯撒密码"),
 ]
 
-for i, (page_name, description, icon) in enumerate(ciphers):
+for i, (page_name, icon, desc) in enumerate(cipher_buttons):
     if i % 3 == 0:
-        cols = st.columns(3)
-    
+        col1, col2, col3 = st.columns(3)
+
+    cols = [col1, col2, col3]
     with cols[i % 3]:
         st.markdown(f"#### {icon} {page_name[2:]}")
-        st.markdown(description)
+        st.markdown(desc)
+        if st.button(f"打开 {page_name[2:]}", key=f"btn_{page_name}"):
+            st.switch_page(f"pages/{page_name}.py")
+
+st.markdown("---")
+st.info("💡 **提示：** 点击上方按钮即可跳转到对应的密码演示页面，或使用左侧边栏的页面导航菜单。")
 
 st.markdown("---")
 
