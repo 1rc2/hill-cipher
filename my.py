@@ -54,8 +54,6 @@ st.markdown("---")
 
 st.markdown("### 📂 选择密码演示")
 
-col1, col2, col3 = st.columns(3)
-
 cipher_buttons = [
     ("1_希尔密码", "📊", "希尔密码（Hill Cipher）使用矩阵乘法进行加密"),
     ("2_仿射密码", "🔢", "仿射密码（Affine Cipher）使用线性变换公式加密"),
@@ -65,16 +63,16 @@ cipher_buttons = [
     ("6_移位密码", "➡️", "移位密码（Shift Cipher）即经典凯撒密码"),
 ]
 
-for i, (page_name, icon, desc) in enumerate(cipher_buttons):
-    if i % 3 == 0:
-        col1, col2, col3 = st.columns(3)
-
-    cols = [col1, col2, col3]
-    with cols[i % 3]:
-        st.markdown(f"#### {icon} {page_name[2:]}")
-        st.markdown(desc)
-        if st.button(f"打开 {page_name[2:]}", key=f"btn_{page_name}"):
-            st.switch_page(f"pages/{page_name}.py")
+for i in range(0, 6, 3):
+    cols = st.columns(3)
+    for j in range(3):
+        if i + j < len(cipher_buttons):
+            page_name, icon, desc = cipher_buttons[i + j]
+            with cols[j]:
+                st.markdown(f"#### {icon} {page_name[2:]}")
+                st.markdown(desc)
+                if st.button(f"打开 {page_name[2:]}", key=f"btn_{page_name}"):
+                    st.switch_page(f"pages/{page_name}.py")
 
 st.markdown("---")
 st.info("💡 **提示：** 点击上方按钮即可跳转到对应的密码演示页面，或使用左侧边栏的页面导航菜单。")
